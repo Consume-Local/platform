@@ -1,0 +1,15 @@
+#! /bin/bash
+
+# For use on the postgres container only.
+# Usage:
+# bin/restoredb teams_dev db/dumps/<your-dump-name>
+set -e
+
+: ${DB_NAME:=$1}
+: ${DB_DUMP_PATH:=$2}
+: ${PGUSER:=postgres}
+
+dropdb -U ${PGUSER} -e --if-exists ${DB_NAME} && \
+createdb -U ${PGUSER} ${1} && \
+pg_restore -U ${PGUSER} --clean --no-owner --no-privileges --verbose --jobs=2 \
+ --dbname=${DB_NAME} ${DB_DUMP_PATH}
