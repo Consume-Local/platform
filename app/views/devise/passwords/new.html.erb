@@ -1,16 +1,27 @@
-<h2>Forgot your password?</h2>
+<section class="full-height flex justify-between">
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="bg-white w-full md:w-1/2 p-16">
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="pb-8">
+        <h3 class="text-2xl text-gray-500 leading-none">Ayuda</h3>
+        <h2 class="text-2xl leading-none">Recuperar Contraseña</h2>
+      </div>
+
+      <p class="pb-2">Ingresa tu correo electrónico para recibir las instrucciones de recuperación.</p>
+
+      <div class="w-full pb-2">
+        <label class="label">Correo Electrónico</label>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input", placeholder: "Correo Electrónico" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Recuperar Contraseña", class: "button primary w-full" %>
+      </div>
+    <% end %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+  <div class="h-full w-full md:w-1/2 bg-center bg-cover bg-no-repeat" style="background-image:url('<%= image_path 'login.jpg' %>');"></div>
 
-<%= render "devise/shared/links" %>
+</section>
