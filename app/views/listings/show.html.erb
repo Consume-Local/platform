@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @listing.name %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @listing.category_id %>
+</p>
+
+<p>
+  <strong>Subcategory:</strong>
+  <%= @listing.subcategory_id %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @listing.street %>
+</p>
+
+<p>
+  <strong>Street number:</strong>
+  <%= @listing.street_number %>
+</p>
+
+<p>
+  <strong>Internal number:</strong>
+  <%= @listing.internal_number %>
+</p>
+
+<p>
+  <strong>Postal code:</strong>
+  <%= @listing.postal_code %>
+</p>
+
+<p>
+  <strong>District:</strong>
+  <%= @listing.district %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @listing.city_id %>
+</p>
+
+<p>
+  <strong>Entity:</strong>
+  <%= @listing.entity_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @listing.user_id %>
+</p>
+
+<p>
+  <strong>Delivery service:</strong>
+  <%= @listing.delivery_service %>
+</p>
+
+<p>
+  <strong>Carry out:</strong>
+  <%= @listing.carry_out %>
+</p>
+
+<p>
+  <strong>Online store:</strong>
+  <%= @listing.online_store %>
+</p>
+
+<%= link_to 'Edit', edit_listing_path(@listing) %> |
+<%= link_to 'Back', listings_path %>
