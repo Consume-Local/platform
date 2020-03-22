@@ -58,6 +58,39 @@
   }
 }
 
+.mobile-menu {
+  @apply flex-col bg-white p-5 hidden;
+
+  &.is-active {
+    @apply flex;
+  }
+}
+
+// Content
+
+
+.content {
+  h2 {
+    @apply text-3xl font-bold pb-2;
+  }
+
+  h3 {
+    @apply text-2xl font-bold py-4;
+  }
+
+  p {
+    @apply pb-3 leading-relaxed;
+  }
+
+  p + p {
+    @apply pb-2;
+  }
+
+  h4 {
+    @apply font-bold;
+  }
+}
+
 
 .dropdown {
   @apply inline-block relative;
