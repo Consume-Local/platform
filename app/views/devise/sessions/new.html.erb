@@ -1,26 +1,44 @@
-<h2>Log in</h2>
+<section class="full-height flex justify-between">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <div class="bg-white w-full md:w-1/2 p-16">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+      <div class="pb-8">
+        <h3 class="text-2xl text-gray-500 leading-none">Bienvenido</h3>
+        <h2 class="text-2xl leading-none">Iniciar Sesión</h2>
+      </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <div class="w-full pb-2">
+        <label class="label">Correo Electrónico</label>
+        <%= f.email_field :email, class: "input", autocomplete: "email", placeholder: "Correo Electrónico" %>
+      </div>
+
+      <div class="w-full pb-2">
+        <label class="label">Contraseña</label>
+        <%= f.password_field :password, class: "input" ,autocomplete: "current-password", placeholder: "Contraseña" %>
+        <%= link_to "¿Olvidaste tu contraseña?", new_password_path(resource_name), class: "underline pt-1 inline-block" %>
+      </div>
+
+      <div class="flex items-center justify-between pb-5">
+
+        <% if devise_mapping.rememberable? %>
+          <label class="font-semibold flex items-center">
+            <%= f.check_box :remember_me, class: "mr-2" %>
+            Recordar mi sesión
+          </label>
+        <% end %>
+
+        <%= f.submit "Iniciar Sesión", class: "button primary" %>
+      </div>
+    <% end %>
+    
+    <div class="text-center p-2 border rounded my-3">
+      <p class="pb-2 font-semibold">¿Aún no tienes cuenta?</p>
+      <%= link_to "Registrate", new_registration_path(resource_name), class: "button secondary w-full" %><br />
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+  <div class="h-full w-full md:w-1/2 bg-center bg-cover bg-no-repeat" style="background-image:url('<%= image_path 'login.jpg' %>');"></div>
+
+</section>

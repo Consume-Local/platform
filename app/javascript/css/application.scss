@@ -2,8 +2,24 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+// Variables
+
+:root {
+  --menu-height: 60px;
+}
+
+// Utilities
+
+.full-height {
+  height: calc(100vh - var(--menu-height));
+}
+
+
+
+// Buttons
+
 .button {
-  @apply text-sm whitespace-pre font-bold px-3 py-2 rounded inline-block;
+  @apply text-sm whitespace-pre font-bold px-3 py-2 rounded inline-block cursor-pointer;
 
   &.primary {
     @apply bg-teal-500 text-white;
@@ -22,10 +38,51 @@
   }
 }
 
+// Input
+
+.input {
+  @apply outline-none p-2 rounded border w-full;
+}
+
+.label {
+  @apply font-semibold pb-1;
+}
+
+// Header
+
 .main-header {
   @apply py-2 border-b;
 
   &__container {
     @apply mx-auto flex items-center justify-between px-4;
   }
+}
+
+
+.dropdown {
+  @apply inline-block relative;
+
+  &__toggle {
+    @apply text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center outline-none;
+
+    &:hover {
+      @apply text-teal-500;
+    }
+  }
+
+  &__link {
+    @apply py-2 px-4 block whitespace-no-wrap;
+
+    &:hover {
+      @apply text-teal-500;
+    }
+  }
+
+  &__menu {
+    @apply absolute hidden text-gray-700 p-2 shadow rounded border bg-white;
+  }
+}
+
+.dropdown:hover .dropdown__menu {
+  display: block;
 }
