@@ -1,3 +1,31 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+.button {
+  @apply text-sm whitespace-pre font-bold px-3 py-2 rounded inline-block;
+
+  &.primary {
+    @apply bg-teal-500 text-white;
+
+    &:hover {
+      @apply bg-teal-800;
+    }
+  }
+
+  &.secondary {
+    @apply bg-gray-100 text-gray-800 border;
+
+    &:hover {
+      @apply bg-gray-200;
+    }
+  }
+}
+
+.main-header {
+  @apply py-2 border-b;
+
+  &__container {
+    @apply mx-auto flex items-center justify-between px-4;
+  }
+}
