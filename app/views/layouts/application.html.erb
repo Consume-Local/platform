@@ -8,6 +8,8 @@
 
     <%= stylesheet_pack_tag 'stylesheets', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
   <body class="antialiased">
@@ -30,7 +32,7 @@
           </div>
 
         </div>
-        <nav class="flex items-center">
+        <nav class="items-center hidden md:flex">
 
           <% if user_signed_in? %>
             <div class="dropdown z-10">
@@ -48,10 +50,31 @@
             <%= link_to('Iniciar Sesión', new_user_session_path, class: "button secondary mr-2 hidden md:inline-block" ) %>  
           <% end %>
           <a class="button primary" href="#">Publicar Negocio</a>
+
         </nav>
+        <button id="menuToggle" class="button secondary md:hidden">Menu</button>
       </div>
     </header>
+    <nav class="mobile-menu">
+      <% if user_signed_in? %>
+        <span class="mb-1 font-bold text-center"><%= current_user.first_name %></span>
+        <a class="button secondary w-full text-center mb-2" href="#">Mis Negocios</a>
+        <%= link_to('Cerrar Sesión', destroy_user_session_path, method: :delete, class: "text-center button secondary mb-2" ) %>
+      <% else %>
+        <a class="button secondary mb-2 hidden md:inline-block text-center" href="#">¿Cómo puedo apoyar?</a>
+        <%= link_to('Iniciar Sesión', new_user_session_path, class: "button secondary text-center mb-2 hidden md:inline-block" ) %>  
+      <% end %>
+      <%= link_to('Guías', guias_path, class: "button secondary mb-2 text-center") %>
+      <a class="button primary text-center" href="#">Publicar Negocio</a>
+    </nav>
     <%= yield %>
+
+    <script>
+      document.getElementById('menuToggle').onclick = function(e) {
+        e.preventDefault()
+        document.getElementsByClassName('mobile-menu')[0].classList.toggle("is-active");
+      }
+    </script>
   </body>
 
 </html>
